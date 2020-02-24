@@ -109,7 +109,7 @@ public class Aplicacao {
 		ObjectOutputStream oos = null;
 		
 		try {
-			oos = new ObjectOutputStream(new FileOutputStream ("raquete.Serial") );
+			oos = new ObjectOutputStream(new FileOutputStream ("raquete.serial") );
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
