@@ -1,16 +1,19 @@
 package br.edu.udc_arquivosRaquete;
 
-import java.io.EOFException;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
-import javax.imageio.IIOException;
+import javax.swing.JOptionPane;
 
 public class Aplicacao {
 	
@@ -31,9 +34,10 @@ public class Aplicacao {
 		
 		try {
 			output.append(raquete.toString());
-			output.append(String.format("Agora vou salvar a raquete diferente: \n," ));
+			output.append(String.format("Agora vou salvar a raquete diferente: \n" ));
 			output.append(String.format("A raquete:\n"));
 			output.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();	
 		}
@@ -49,22 +53,7 @@ public class Aplicacao {
 		}
 		
 		
-		Path caminho = Path.of("Raquete.txt");
-		
-		try {
-			
-			byte [] texto = Files.readAllBytes(caminho);
-			String leitura = new String(texto);
-			
-			System.out.println(texto);
-			
-		}catch(IOException erro) {
-			
-		}
-		
-		
-		
-		
+		leitor();
 		
 	}
 	
@@ -120,12 +109,38 @@ public class Aplicacao {
 		ObjectOutputStream oos = null;
 		
 		try {
-			oos = new ObjectOutputStream(new FileOutputStream ("raquetes.serial") );
+			oos = new ObjectOutputStream(new FileOutputStream ("raquete.Serial") );
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
 		
 		return oos;
 	}
-
+	public void leitor (){
+		try {
+			
+			FileInputStream arq = new FileInputStream("raquetes.txt");
+			InputStreamReader input = new InputStreamReader(arq);
+			BufferedReader buffer = new BufferedReader(input);
+			
+			String texto = null;
+			
+			do {
+				
+				texto = buffer.readLine();
+				if(texto != null) {
+					//System.out.println(texto);
+					JOptionPane.showMessageDialog(null, texto);
+				}
+				
+			}while( texto != null);
+			
+			
+			
+			
+		}catch(Exception erro) {
+			System.out.println("Erro ao ler o arquivo");
+		}
+		
+	}
 }
