@@ -1,11 +1,16 @@
 package br.edu.udc_arquivosRaquete;
 
+import java.io.EOFException;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
+
+import javax.imageio.IIOException;
 
 public class Aplicacao {
 	
@@ -42,6 +47,25 @@ public class Aplicacao {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		
+		Path caminho = Path.of("Raquete.txt");
+		
+		try {
+			
+			byte [] texto = Files.readAllBytes(caminho);
+			String leitura = new String(texto);
+			
+			System.out.println(texto);
+			
+		}catch(IOException erro) {
+			
+		}
+		
+		
+		
+		
+		
 	}
 	
 	static Raquete lerRaquete() {

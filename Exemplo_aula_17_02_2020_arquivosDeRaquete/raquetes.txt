@@ -1,2 +1,2 @@
-Informações da raquete: Peso: 0.5, Cor: rosa, Comprimento: 123)Agora vou salvar a raquete diferente: 
+Informações da raquete: Peso: 0.506, Cor: ros, Comprimento: 123)Agora vou salvar a raquete diferente: 
 ,A raquete:
