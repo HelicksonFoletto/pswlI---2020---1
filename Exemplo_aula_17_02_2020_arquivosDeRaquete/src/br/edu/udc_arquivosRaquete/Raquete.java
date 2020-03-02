@@ -41,7 +41,7 @@ public class Raquete implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Informações da raquete: Peso: " + peso + ", Cor: " + cor + ", Comprimento: " + comprimento + ")";
+		return "Informações da raquete: Peso: " + peso + ", Cor: " + cor + ", Comprimento: " + comprimento + "";
 	}
 	
 }
