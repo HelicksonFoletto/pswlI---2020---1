@@ -1,14 +1,14 @@
 package edu.udc.pswII_desenho_formas;
 
-import java.awt.Graphics;
-
-import edu.udc.pswII_desenho_formas_manipulador.ManipuladorPonto;
+import edu.udc.pswII_desenho_formas_manipulador.ManipuladorLinha;
 import edu.udc.pswII_desenho_formas_manipulador.ManipuladorTriangulo;
 
 public class Triangulo implements FormasGeometricas {
 	private Ponto a;
 	private Ponto b;
 	private Ponto c;
+	
+	private ManipuladorTriangulo manipulador = null;
 	
 	public Triangulo(Ponto a, Ponto b, Ponto c) {
 		this.a = a.clone();
@@ -97,8 +97,11 @@ public class Triangulo implements FormasGeometricas {
 	}
 
 	@Override
-	public ManipuladorTriangulo getManipulador() {
-		return new ManipuladorTriangulo(this);
+	public ManipuladorTriangulo getManipulador() {		
+		if(manipulador == null)
+			manipulador = new ManipuladorTriangulo(this);
+		
+		return manipulador;
 	}
 
 	public Ponto getA() {

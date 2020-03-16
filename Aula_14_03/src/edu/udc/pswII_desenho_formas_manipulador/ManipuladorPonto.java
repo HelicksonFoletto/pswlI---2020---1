@@ -16,5 +16,22 @@ public class ManipuladorPonto implements ManipuladorForma {
 		g.drawOval(ponto.getX(), ponto.getY(), 5, 5);
 		
 	}
+	@Override
+	public void arrastar(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mover(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public boolean click(int x, int y) {
+		ponto.setX(x);
+		ponto.setY(y);
+		
+		return true;
+	}
 
 }

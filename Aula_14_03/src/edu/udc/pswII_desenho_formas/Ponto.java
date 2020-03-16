@@ -6,6 +6,8 @@ public class Ponto implements FormasGeometricas {
 	int x;
 	int y;
 	
+	private ManipuladorPonto manipulador = null;
+	
 	public Ponto(int x, int y) {
 		this.x = x;
 		this.y = y; 
@@ -22,7 +24,15 @@ public class Ponto implements FormasGeometricas {
 	public int getY() {
 		return y;
 	}
-	
+		
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
 	@Override 
 	public String toString() {
 		return String.format("(%d; %d)",x,y);
@@ -81,6 +91,9 @@ public class Ponto implements FormasGeometricas {
 	
 	@Override
 	public ManipuladorPonto getManipulador() {
-		return new ManipuladorPonto(this);
+		if(manipulador == null)
+			manipulador = new ManipuladorPonto(this);
+		
+		return manipulador;
 	}
 }

@@ -1,10 +1,13 @@
 package edu.udc.pswII_desenho_formas;
 
 import edu.udc.pswII_desenho_formas_manipulador.ManipuladorLinha;
+import edu.udc.pswII_desenho_formas_manipulador.ManipuladorPonto;
 
 public class Linha implements FormasGeometricas {
 	private Ponto a;
 	private Ponto b;
+	
+	private ManipuladorLinha manipulador = null;
 	
 	public Linha(Ponto a, Ponto b) {
 		this.a = a.clone();
@@ -101,7 +104,10 @@ public class Linha implements FormasGeometricas {
 	
 	@Override
 	public ManipuladorLinha getManipulador() {
-		return new ManipuladorLinha(this);
+		if(manipulador == null)
+			manipulador = new ManipuladorLinha(this);
+		
+		return manipulador;
 	}
 
 	public Ponto getA() {

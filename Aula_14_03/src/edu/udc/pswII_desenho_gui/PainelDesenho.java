@@ -52,63 +52,17 @@ public class PainelDesenho extends JPanel implements MouseListener, MouseMotionL
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(formaAtual != null && formaAtual.getClass().equals(Ponto.class)) {
-			//((Ponto)formaAtual).setX(e.getX()); 
-			
-			formaAtual = new Ponto(e.getX(), e.getY());
-			
-			listaFormas.add(formaAtual);
-			formaAtual = formaAtual.clone();
-			
+		
+		if(formaAtual != null) {
+			if(formaAtual.getManipulador().click(e.getX(), e.getY())) {
+				listaFormas.add(formaAtual);
+				formaAtual = formaAtual.clone();
+			}
+				
 			repaint();
 		}
-		else if(formaAtual != null && formaAtual.getClass().equals(Linha.class)) {
-			
-			switch(estado) {
-				case 0:
-				
-					((Linha)formaAtual).setA(new Ponto(e.getX(), e.getY()));
-					((Linha)formaAtual).setB(new Ponto(e.getX(), e.getY()));
-					estado = 1;
-					repaint();
-					break;
-			
-				case 1: {
-					((Linha)formaAtual).setB(new Ponto(e.getX(), e.getY()));
-					repaint();
-					estado = 0;
-					listaFormas.add(formaAtual);
-					formaAtual = formaAtual.clone();
-				}
-			
-			}
-		}
-		else if(formaAtual != null && formaAtual.getClass().equals(Triangulo.class)){
-			
-			switch(estado) {
-			case 0:
-					((Triangulo)formaAtual).setA(new Ponto(e.getX(), e.getY()));
-					((Triangulo)formaAtual).setB(new Ponto(e.getX(), e.getY()));
-					((Triangulo)formaAtual).setC(new Ponto(e.getX(), e.getY()));
-					estado = 1;
-					repaint();
-					break;
 		
-			case 1: 
-					((Triangulo)formaAtual).setB(new Ponto(e.getX(), e.getY()));
-					((Triangulo)formaAtual).setC(new Ponto(e.getX(), e.getY()));
-					repaint();
-					estado = 2;
-					break;
-			case 2:
-					((Triangulo)formaAtual).setC(new Ponto(e.getX(), e.getY()));
-					repaint();
-					estado = 0;
-					listaFormas.add(formaAtual);
-					formaAtual = formaAtual.clone();
-					break;
-			}	
-		}
+		
 		String msg = String.format( "Mouse clicado em (%d; %d)", e.getX(), e.getY());
 		if(formaAtual != null)
 			msg = msg + "- desenhando " + formaAtual.getNome() + " em " + formaAtual;
@@ -116,47 +70,16 @@ public class PainelDesenho extends JPanel implements MouseListener, MouseMotionL
 	}
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		
-		if(formaAtual != null && formaAtual.getClass().equals(Linha.class)) {
-			if(estado == 1) {
-				((Linha)formaAtual).setB(new Ponto(e.getX(),e.getY()));
-				repaint();
-			}
+		if(formaAtual != null) {
+			formaAtual.getManipulador().mover(e.getX(),e.getY());
+			repaint();
 		}
 		
-		else if(formaAtual != null && formaAtual.getClass().equals(Linha.class)) {
-			
-			switch(estado) {
-			
-				case 1: {
-					((Linha)formaAtual).setB(new Ponto(e.getX(), e.getY()));
-					repaint();
-					estado = 0;
-				}
-			
-			}
-		}
-		else if(formaAtual != null && formaAtual.getClass().equals(Triangulo.class)){
-			
-			switch(estado) {
-
-				case 1: 
-					((Triangulo)formaAtual).setB(new Ponto(e.getX(), e.getY()));
-					((Triangulo)formaAtual).setC(new Ponto(e.getX(), e.getY()));
-					repaint();
-					
-					break;
-				case 2:
-					((Triangulo)formaAtual).setC(new Ponto(e.getX(), e.getY()));
-					repaint();
-				
-					break;
-			}	
 		String msg = String.format( "Mouse movimentado em (%d; %d)", e.getX(), e.getY());
 		if(formaAtual != null)
 			msg = msg + "- desenhando " + formaAtual.getNome() + " em " + formaAtual;
 		status.setText(msg);		
-		}
+		
 	}
 	@Override
 	public void mousePressed(MouseEvent e) {
