@@ -43,9 +43,10 @@ public class PainelDesenho extends JPanel implements MouseListener, MouseMotionL
 		super.paint(g);
 		
 		if(formaAtual != null)		
-			formaAtual.desenhar(g);
+			formaAtual.getManipulador().desenhar(g);
+		
 		for(FormasGeometricas f : listaFormas) {
-			f.desenhar(g);
+			f.getManipulador().desenhar(g);
 		}
 	}
 	

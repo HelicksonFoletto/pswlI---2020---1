@@ -1,6 +1,6 @@
 package edu.udc.pswII_desenho_formas;
 
-import java.awt.Graphics;
+import edu.udc.pswII_desenho_formas_manipulador.ManipuladorForma;
 
 public interface FormasGeometricas {
 	
@@ -19,5 +19,5 @@ public interface FormasGeometricas {
 	
 	FormasGeometricas clone();
 	
-	void desenhar(Graphics g);
+	public ManipuladorForma getManipulador();
 }

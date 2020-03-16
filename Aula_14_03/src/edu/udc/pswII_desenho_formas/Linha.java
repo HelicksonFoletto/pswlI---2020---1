@@ -1,6 +1,6 @@
 package edu.udc.pswII_desenho_formas;
 
-import java.awt.Graphics;
+import edu.udc.pswII_desenho_formas_manipulador.ManipuladorLinha;
 
 public class Linha implements FormasGeometricas {
 	private Ponto a;
@@ -97,11 +97,19 @@ public class Linha implements FormasGeometricas {
 	@Override
 	public Linha clone() {
 		return new Linha(this);
-	}
-
+	}	
+	
 	@Override
-	public void desenhar(Graphics g) {
-		g.drawLine(a.getX(), a.getY(), b.getX(), b.getY());		
+	public ManipuladorLinha getManipulador() {
+		return new ManipuladorLinha(this);
 	}
 
+	public Ponto getA() {
+		return a;
+	}
+
+	public Ponto getB() {
+		return b;
+	}
+	
 }

@@ -6,7 +6,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Exercicio_15_8_ListaDeFiguras_2020"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Exercicio_25_6_Desenhando_2020"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

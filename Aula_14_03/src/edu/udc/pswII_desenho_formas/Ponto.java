@@ -1,6 +1,6 @@
 package edu.udc.pswII_desenho_formas;
 
-import java.awt.Graphics;
+import edu.udc.pswII_desenho_formas_manipulador.ManipuladorPonto;
 
 public class Ponto implements FormasGeometricas {
 	int x;
@@ -78,11 +78,9 @@ public class Ponto implements FormasGeometricas {
 	public Ponto clone() {
 		return new Ponto(x,y);
 	}
-
+	
 	@Override
-	public void desenhar(Graphics g) {
-		g.drawOval(x, y, 5, 5);
-		
+	public ManipuladorPonto getManipulador() {
+		return new ManipuladorPonto(this);
 	}
-
 }
