@@ -11,9 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import edu.udc.pswII_desenho_formas.FormasGeometricas;
-import edu.udc.pswII_desenho_formas.Linha;
-import edu.udc.pswII_desenho_formas.Ponto;
-import edu.udc.pswII_desenho_formas.Triangulo;
 
 public class PainelDesenho extends JPanel implements MouseListener, MouseMotionListener {
 
