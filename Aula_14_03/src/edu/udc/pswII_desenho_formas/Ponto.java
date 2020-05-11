@@ -2,11 +2,15 @@ package edu.udc.pswII_desenho_formas;
 
 import edu.udc.pswII_desenho_formas_manipulador.ManipuladorPonto;
 
-public class Ponto implements FormasGeometricas {
+public class Ponto implements FormaGeometrica {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	int x;
 	int y;
 	
-	private ManipuladorPonto manipulador = null;
+	private transient ManipuladorPonto manipulador = null;
 	
 	public Ponto(int x, int y) {
 		this.x = x;
@@ -67,7 +71,7 @@ public class Ponto implements FormasGeometricas {
 		return 0;
 	}
 	
-	public double distancia(FormasGeometricas f) {
+	public double distancia(FormaGeometrica f) {
 		Ponto c = f.centro();
 		int dx = x - c.x;
 		int dy = y - c.y;

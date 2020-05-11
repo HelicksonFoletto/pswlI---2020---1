@@ -53,4 +53,16 @@ public class ManipuladorLinha implements ManipuladorForma {
 		return false;
 	}
 
+	@Override
+	public void apertar(int x, int y) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean soltar(int x, int y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

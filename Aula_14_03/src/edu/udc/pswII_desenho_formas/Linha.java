@@ -1,13 +1,12 @@
 package edu.udc.pswII_desenho_formas;
 
 import edu.udc.pswII_desenho_formas_manipulador.ManipuladorLinha;
-import edu.udc.pswII_desenho_formas_manipulador.ManipuladorPonto;
 
-public class Linha implements FormasGeometricas {
+public class Linha implements FormaGeometrica {
 	private Ponto a;
 	private Ponto b;
 	
-	private ManipuladorLinha manipulador = null;
+	private transient ManipuladorLinha manipulador = null;
 	
 	public Linha(Ponto a, Ponto b) {
 		this.a = a.clone();
@@ -54,7 +53,7 @@ public class Linha implements FormasGeometricas {
 		return Math.abs(a.getY() - b.getY());
 	}
 	@Override
-	public double distancia(FormasGeometricas f) {
+	public double distancia(FormaGeometrica f) {
 		Ponto cf = f.centro();
 		Ponto cl = centro();
 		int dx = cl.getX() - cf.getX();

@@ -1,14 +1,13 @@
 package edu.udc.pswII_desenho_formas;
 
-import edu.udc.pswII_desenho_formas_manipulador.ManipuladorLinha;
 import edu.udc.pswII_desenho_formas_manipulador.ManipuladorTriangulo;
 
-public class Triangulo implements FormasGeometricas {
+public class Triangulo implements FormaGeometrica {
 	private Ponto a;
 	private Ponto b;
 	private Ponto c;
 	
-	private ManipuladorTriangulo manipulador = null;
+	private transient ManipuladorTriangulo manipulador = null;
 	
 	public Triangulo(Ponto a, Ponto b, Ponto c) {
 		this.a = a.clone();
@@ -62,7 +61,7 @@ public class Triangulo implements FormasGeometricas {
 	}
 
 	@Override
-	public double distancia(FormasGeometricas f) {
+	public double distancia(FormaGeometrica f) {
 		Ponto cf = f.centro();
 		Ponto ct = centro();
 		int dx = ct.getX() - cf.getX();
